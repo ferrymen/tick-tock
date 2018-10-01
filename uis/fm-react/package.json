@@ -1,6 +1,6 @@
 {
   "name": "@ferrymen/fm-react",
-  "version": "1.0.4-0",
+  "version": "1.0.4-1",
   "description": "UI library base on components",
   "main": "index.js",
   "scripts": {
