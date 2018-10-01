@@ -1,17 +1,23 @@
 {
-	"scripts": {
-		"ct": "git-cz",
-		"precommit": "lint-staged",
-		"commitmsg": "commitlint -e $GIT_PARAMS"
-	},
-	"devDependencies": {
-		"commitizen": "^2.10.1",
-		"lerna": "^2.11.0"
-	},
-	"lint-staged": {
-    "*.js": [
-      "prettier --trailing-comma es5 --single-quote --write",
-      "git add"
-    ]
-  }
+		"scripts": {
+				"ct": "git-cz",
+				"commitmsg": "commitlint -e $GIT_PARAMS"
+		},
+		"devDependencies": {
+				"commitizen": "^2.10.1",
+				"cz-lerna-changelog": "1.2.1",
+				"husky": "^1.0.1",
+				"lerna": "^2.11.0"
+		},
+		"lint-staged": {
+				"*.js": [
+						"prettier --trailing-comma es5 --single-quote --write",
+						"git add"
+				]
+		},
+		"config": {
+				"commitizen": {
+						"path": "./node_modules/cz-lerna-changelog"
+				}
+		}
 }
