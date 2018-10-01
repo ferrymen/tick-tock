@@ -4,5 +4,13 @@
     "styles/*",
     "uis/*"
   ],
-  "version": "independent"
+  "version": "independent",
+  "changelog": {
+    "repo": "ferrymen/tick-tock",
+    "labels": {
+      "l:bugfix": "Bug fix",
+      "l:enhancement": "Enhancement"
+    },
+    "cacheDir": ".changelog"
+  }
 }
