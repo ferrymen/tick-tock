@@ -1,6 +1,6 @@
 {
   "name": "@ferrymen/fm-react",
-  "version": "1.0.0",
+  "version": "1.0.2",
   "description": "UI library base on components",
   "main": "index.js",
   "scripts": {
@@ -10,6 +10,6 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "@ferrymen/fm-css": "^1.0.0"
+    "@ferrymen/fm-css": "^1.0.2"
   }
 }
