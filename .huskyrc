@@ -1,6 +1,0 @@
-{
-  "hooks": {
-    "precommit": "lint-staged",
-    "commitmsg": "commitlint -e $GIT_PARAMS"
-  }
-}
