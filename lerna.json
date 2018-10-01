@@ -9,7 +9,8 @@
     "repo": "ferrymen/tick-tock",
     "labels": {
       "l:bugfix": "Bug fix",
-      "l:enhancement": "Enhancement"
+      "l:enhancement": "Enhancement",
+      "enhancement": "Enhancement offical"
     },
     "cacheDir": ".changelog"
   }
