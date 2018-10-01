@@ -1,6 +1,8 @@
 {
   "scripts": {
-    "ct": "git-cz"
+    "ct": "git-cz",
+    "release": "lerna publish --conventional-commits --skip-git --skip-npm",
+    "lerna-changelog": "lerna-changelog"
   },
   "devDependencies": {
     "@commitlint/cli": "^7.1.2",
@@ -9,6 +11,7 @@
     "cz-lerna-changelog": "1.2.1",
     "husky": "^1.0.1",
     "lerna": "^2.11.0",
+    "lerna-changelog": "^0.8.0",
     "lint-staged": "^7.3.0",
     "prettier": "^1.14.3"
   },
