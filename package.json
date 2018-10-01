@@ -1,9 +1,36 @@
 {
-	"scripts": {
-		"lerna-changelog": "lerna-changelog"
-	},
-	"devDependencies": {
-		"lerna": "^2.11.0",
-		"lerna-changelog": "^0.8.0"
-	}
+  "scripts": {
+    "ct": "git-cz",
+    "release": "lerna publish --conventional-commits --skip-git --skip-npm",
+    "publish": "./tasks/publish.js",
+    "lerna-changelog": "lerna-changelog"
+  },
+  "devDependencies": {
+    "@commitlint/cli": "^7.1.2",
+    "@commitlint/config-conventional": "^7.1.2",
+    "commitizen": "^2.10.1",
+    "cz-lerna-changelog": "1.2.1",
+    "husky": "^1.0.1",
+    "lerna": "^2.11.0",
+    "lerna-changelog": "^0.8.0",
+    "lint-staged": "^7.3.0",
+    "prettier": "^1.14.3"
+  },
+  "lint-staged": {
+    "**/*.js": [
+      "prettier --trailing-comma es5 --single-quote --write",
+      "git add"
+    ]
+  },
+  "config": {
+    "commitizen": {
+      "path": "./node_modules/cz-lerna-changelog"
+    }
+  },
+  "husky": {
+    "hooks": {
+      "commit-msg": "commitlint -E HUSKY_GIT_PARAMS",
+      "pre-commit": "lint-staged"
+    }
+  }
 }
