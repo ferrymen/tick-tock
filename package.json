@@ -2,6 +2,7 @@
   "scripts": {
     "ct": "git-cz",
     "release": "lerna publish --conventional-commits --skip-git --skip-npm",
+    "publish": "./tasks/publish.js",
     "lerna-changelog": "lerna-changelog"
   },
   "devDependencies": {
