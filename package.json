@@ -9,7 +9,8 @@
     "cz-lerna-changelog": "1.2.1",
     "husky": "^1.0.1",
     "lerna": "^2.11.0",
-    "lint-staged": "^7.3.0"
+    "lint-staged": "^7.3.0",
+    "prettier": "^1.14.3"
   },
   "lint-staged": {
     "**/*.js": [
