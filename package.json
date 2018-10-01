@@ -1,9 +1,10 @@
 {
 	"scripts": {
-		"lerna-changelog": "lerna-changelog"
+		"ct": "git-cz",
+		"precommit": "lint-staged",
+		"commitmsg": "commitlint -e $GIT_PARAMS"
 	},
 	"devDependencies": {
-		"lerna": "^2.11.0",
-		"lerna-changelog": "^0.8.0"
+		"lerna": "^2.11.0"
 	}
 }
