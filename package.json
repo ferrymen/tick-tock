@@ -10,6 +10,9 @@
     "@commitlint/config-conventional": "^7.1.2",
     "commitizen": "^2.10.1",
     "cz-lerna-changelog": "1.2.1",
+    "eslint": "^5.6.1",
+    "eslint-config-prettier": "^3.1.0",
+    "eslint-plugin-prettier": "^3.0.0",
     "husky": "^1.0.1",
     "lerna": "^2.11.0",
     "lerna-changelog": "^0.8.0",
@@ -18,7 +21,8 @@
   },
   "lint-staged": {
     "**/*.js": [
-      "prettier --trailing-comma es5 --single-quote --write",
+      "prettier --write",
+      "eslint --fix",
       "git add"
     ]
   },
