@@ -27,4 +27,4 @@ fi
 ./node_modules/.bin/lerna publish --independent "$@"
 
 # Pause
-# read -p "Press enter to continue..."
+read -p "Press enter to continue..."
