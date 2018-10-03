@@ -2,7 +2,7 @@ module.exports = {
   env: {
     jest: true
   },
-  extends: ["eslint-config-postcss", "prettier"],
+  extends: ["prettier"],
   parserOptions: {
     ecmaVersion: 6,
     sourceType: "module"
