@@ -3,5 +3,6 @@ module.exports = {
     prefix: '',
     important: false,
     separator: ':'
-  }
+  },
+  plugins: []
 }

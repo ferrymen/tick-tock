@@ -3,9 +3,31 @@
  * @param {*} config
  */
 
-export default function(config) {
-  console.log(config)
+import postcss from 'postcss'
+import fs from 'fs'
+import _ from 'lodash'
+
+export default function(config, { components: pluginComponents }) {
+  function updateSource(nodes, source) {
+    return _.tap(_.isArray(nodes) ? postcss.root({ nodes }) : nodes, tree => {
+      // Traverses the container's descendant nodes, calling callback for eache node
+      tree.walk(node => (node.source = source))
+    })
+  }
   return function(css) {
-    console.log(css)
+    css.walkAtRules('fm-css', atRule => {
+      if (atRule.params === 'preload') {
+        const preloadTree = postcss.parse(
+          fs.readFileSync(`${__dirname}/../../css/preload.css`, 'utf8')
+        )
+        atRule.before(updateSource(preloadTree, atRule.source))
+        atRule.remove()
+      }
+
+      if (atRule.params === 'components') {
+        atRule.before(updateSource(pluginComponents, atRule.source))
+        atRule.remove()
+      }
+    })
   }
 }
