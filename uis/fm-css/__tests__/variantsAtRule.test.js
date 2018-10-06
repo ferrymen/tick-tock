@@ -19,8 +19,8 @@ it('it can generate hover variants', () => {
   const output = `
     .foo { color: yellow; }
     .bar { color: brown; }
-    .hover\\3Afoo:hover { color: yellow; }
-    .hover\\3Abar:hover { color: brown; }
+    .hover\\:foo:hover { color: yellow; }
+    .hover\\:bar:hover { color: brown; }
   `
 
   return run(input).then(result => {
@@ -40,8 +40,8 @@ it('it wraps the output in a responsive at-rule if responsive is included as a v
     @responsive {
       .foo { color: yellow; }
       .bar { color: brown; }
-      .hover\\3Afoo:hover { color: yellow; }
-      .hover\\3Abar:hover { color: brown; }
+      .hover\\:foo:hover { color: yellow; }
+      .hover\\:bar:hover { color: brown; }
     }
   `
 
