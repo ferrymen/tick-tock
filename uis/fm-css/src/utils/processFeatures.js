@@ -5,6 +5,7 @@ import generateUtilities from './generateUtilities'
 import fmCssAtRule from '../features/fmCssAtRule'
 import variantsAtRule from '../features/variantsAtRule'
 import responsiveAtRule from '../features/responsiveAtRule'
+import screenAtRule from '../features/screenAtRule'
 
 /**
  * Process at-rule
@@ -19,7 +20,8 @@ export default function(getConfig) {
     return postcss([
       fmCssAtRule(config, registerPlugin, utilities),
       variantsAtRule(config, registerPlugin),
-      responsiveAtRule(config)
+      responsiveAtRule(config),
+      screenAtRule(config)
     ]).process(css, {
       from: _.get(css, 'source.input.file')
     })
