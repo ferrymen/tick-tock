@@ -3,9 +3,11 @@ import _ from 'lodash'
 import registerPlugins from './registerPlugins'
 import generateUtilities from './generateUtilities'
 import fmCssAtRule from '../features/fmCssAtRule'
+import evaluateFunctions from '../features/evaluateFunctions'
 import variantsAtRule from '../features/variantsAtRule'
 import responsiveAtRule from '../features/responsiveAtRule'
 import screenAtRule from '../features/screenAtRule'
+import classApplyAtRule from '../features/classApplyAtRule'
 
 /**
  * Process at-rule
@@ -19,9 +21,11 @@ export default function(getConfig) {
 
     return postcss([
       fmCssAtRule(config, registerPlugin, utilities),
+      evaluateFunctions(config),
       variantsAtRule(config, registerPlugin),
       responsiveAtRule(config),
-      screenAtRule(config)
+      screenAtRule(config),
+      classApplyAtRule(config, utilities)
     ]).process(css, {
       from: _.get(css, 'source.input.file')
     })
