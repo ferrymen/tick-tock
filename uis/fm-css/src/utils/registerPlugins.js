@@ -4,6 +4,7 @@ import _ from 'lodash'
 import parseObjectStyles from './parseObjectStyles'
 import prefixSelector from './prefixSelector'
 import wrapWithVariants from './wrapWithVariants'
+import generateVariantFunction from './generateVariantFunction'
 
 /**
  * Inject config,addComponents
@@ -12,6 +13,7 @@ import wrapWithVariants from './wrapWithVariants'
 export default function(config) {
   const pluginComponents = []
   const pluginUtilities = []
+  const pluginVariants = {}
 
   function parseStyles(styles) {
     if (!_.isArray(styles)) {
@@ -56,12 +58,16 @@ export default function(config) {
         })
 
         pluginUtilities.push(wrapWithVariants(styles.nodes, options.variants))
+      },
+      registerVariants: (name, generator) => {
+        pluginVariants[name] = generateVariantFunction(generator)
       }
     })
   })
 
   return {
     components: pluginComponents,
-    utilities: pluginUtilities
+    utilities: pluginUtilities,
+    variantGenerators: pluginVariants
   }
 }

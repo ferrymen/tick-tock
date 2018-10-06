@@ -1,8 +1,9 @@
 import postcss from 'postcss'
 import _ from 'lodash'
-import fmCssAtRule from '../features/fmCssAtRule'
 import registerPlugins from './registerPlugins'
 import generateUtilities from './generateUtilities'
+import fmCssAtRule from '../features/fmCssAtRule'
+import variantsAtRule from '../features/variantsAtRule'
 
 /**
  * Process at-rule
@@ -14,7 +15,10 @@ export default function(getConfig) {
     const registerPlugin = registerPlugins(config)
     const utilities = generateUtilities(config, registerPlugin.utilities)
 
-    return postcss([fmCssAtRule(config, registerPlugin, utilities)]).process(css, {
+    return postcss([
+      fmCssAtRule(config, registerPlugin, utilities),
+      variantsAtRule(config, registerPlugin)
+    ]).process(css, {
       from: _.get(css, 'source.input.file')
     })
   }
