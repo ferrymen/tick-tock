@@ -21,8 +21,10 @@
     "jest": "^23.6.0",
     "lodash": "^4.17.11",
     "postcss": "^7.0.4",
+    "postcss-functions": "^3.0.0",
     "postcss-js": "^2.0.0",
     "postcss-nested": "^4.1.0",
-    "postcss-selector-parser": "3.1.1"
+    "postcss-selector-parser": "3.1.1",
+    "prettier": "^1.14.3"
   }
 }
