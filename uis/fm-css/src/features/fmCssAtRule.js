@@ -7,7 +7,7 @@ import postcss from 'postcss'
 import fs from 'fs'
 import _ from 'lodash'
 
-export default function(config, { components: pluginComponents }) {
+export default function(config, { components: pluginComponents }, pluginUtilities) {
   function updateSource(nodes, source) {
     return _.tap(_.isArray(nodes) ? postcss.root({ nodes }) : nodes, tree => {
       // Traverses the container's descendant nodes, calling callback for eache node
@@ -26,6 +26,11 @@ export default function(config, { components: pluginComponents }) {
 
       if (atRule.params === 'components') {
         atRule.before(updateSource(pluginComponents, atRule.source))
+        atRule.remove()
+      }
+
+      if (atRule.params === 'utilities') {
+        atRule.before(updateSource(pluginUtilities, atRule.source))
         atRule.remove()
       }
     })
