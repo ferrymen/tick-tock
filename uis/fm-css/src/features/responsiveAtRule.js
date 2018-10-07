@@ -4,6 +4,14 @@ import cloneNodes from '../utils/cloneNodes'
 import buildMediaQuery from '../utils/buildMediaQuery'
 import buildSelectorVariant from '../utils/buildSelectorVariant'
 
+/**
+ * @responsive
+ * @param {*} config
+ * @example
+ * @responsive {
+ *  .foo {color: red}
+ * }
+ */
 export default function(config) {
   return function(css) {
     const screens = config.screens

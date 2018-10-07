@@ -2,6 +2,12 @@ import postcss from 'postcss'
 import _ from 'lodash'
 import wrapWithVariants from './wrapWithVariants'
 
+/**
+ *
+ * @param {*} utilities
+ * @param {*} utilitiesOpts
+ * @param {*} config
+ */
 export default function(utilities, utilitiesOpts, config) {
   if (!_.isArray(utilities)) {
     utilities = _.map(utilities, val => {

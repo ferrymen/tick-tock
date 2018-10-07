@@ -15,6 +15,15 @@ const defaultVariantGenerators = {
   active: generatePseudoClassVariant('active')
 }
 
+/**
+ * @variants
+ * @param {*} config
+ * @param {*} param1
+ * @example
+ * @variant responsive, active {
+ *  .foo {color: red}
+ * }
+ */
 export default function(config, { variantGenerators: pluginVariantGenerators }) {
   return function(css) {
     const variantGenerators = {

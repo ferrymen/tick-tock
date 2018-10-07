@@ -2,6 +2,15 @@ import escapeClassName from './escapeClassName'
 import parser from 'postcss-selector-parser'
 import tap from 'lodash/tap'
 
+/**
+ * rename class name
+ * @param {*} selector
+ * @param {*} variantName
+ * @param {*} separator
+ * @param {*} onError
+ * @example
+ * .sm\\:foo { color: yello }
+ */
 export default function buildSelectorVariant(selector, variantName, separator, onError = () => {}) {
   return parser(selectors => {
     tap(selectors.first.filter(({ type }) => type === 'class').pop(), classSelector => {
