@@ -6,6 +6,8 @@ import escapeClassName from './escapeClassName'
  * Define class
  * @param {*} className
  * @param {*} properties
+ * @example
+ * defineClass('flex', { display: 'flex' }
  */
 export default function(className, properties) {
   const decls = _.map(properties, (value, property) => {

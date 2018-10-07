@@ -1,6 +1,8 @@
 /**
  * @fm-css at-rule
  * @param {*} config
+ * @example
+ * @fm-css preload|components|utilities
  */
 
 import postcss from 'postcss'

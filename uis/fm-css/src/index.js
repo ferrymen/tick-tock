@@ -1,6 +1,3 @@
-/**
- * Main
- */
 import { resolve } from 'path'
 
 import postcss from 'postcss'

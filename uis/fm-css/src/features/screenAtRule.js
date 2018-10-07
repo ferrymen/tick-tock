@@ -1,6 +1,14 @@
 import _ from 'lodash'
 import buildMediaQuery from '../utils/buildMediaQuery'
 
+/**
+ * @screen
+ * @param {*} config
+ * @example
+ * @screen sm {
+ *  .foo {color: red}
+ * }
+ */
 export default function(config) {
   return function(css) {
     css.walkAtRules('screen', atRule => {

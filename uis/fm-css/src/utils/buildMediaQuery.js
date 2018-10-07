@@ -1,5 +1,11 @@
 import _ from 'lodash'
 
+/**
+ * generate media query
+ * @param {*} screens
+ * @example
+ * (min-width: 500px)
+ */
 export default function buildMediaQuery(screens) {
   if (_.isString(screens)) {
     screens = { min: screens }
