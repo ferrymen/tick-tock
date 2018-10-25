@@ -1,7 +1,7 @@
-import { resolve } from 'path'
-import yargs, { Arguments } from 'yargs'
-import pkgInfo = require('../package.json')
-import Command from './utils/command'
+import { resolve } from 'path';
+import yargs, { Arguments } from 'yargs';
+import pkgInfo = require('../package.json');
+import Command from './utils/command';
 
 /**
  * Main class Cli that register commands and launch command
@@ -13,10 +13,10 @@ class Cli {
    */
   public async bootstrap(args: Arguments): Promise<void> {
     try {
-      const commandInst = new Command(resolve(__dirname, 'commands'))
-      const commands = await commandInst.load()
+      const commandInst = new Command(resolve(__dirname, 'commands'));
+      const commands = await commandInst.load();
       for (const command of commands) {
-        yargs.command(command)
+        yargs.command(command);
       }
       // tslint:disable-next-line:no-unused-expression
       yargs
@@ -30,13 +30,13 @@ class Cli {
         .usage(`Usage: $0 <command> [option]`)
         .demandCommand(1, 'A command must be called as argument')
         .fail(msg => {
-          yargs.showHelp()
-          process.exit(1)
-        }).argv
+          yargs.showHelp();
+          process.exit(1);
+        }).argv;
     } catch (error) {
-      console.log(`An error occured: ${error}`)
+      console.log(`An error occured: ${error}`);
     }
   }
 }
 
-export default Cli
+export default Cli;
