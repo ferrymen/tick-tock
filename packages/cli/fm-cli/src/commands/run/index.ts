@@ -1,5 +1,5 @@
 import { Arguments, Argv, CommandModule } from 'yargs';
-import Task from '../../task';
+import Task from '../../Task';
 
 /**
  * Run the defined task
