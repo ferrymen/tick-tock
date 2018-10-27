@@ -1,1 +1,1 @@
-import { PipeTask } from '@ferrymen/fm-pipe';
+import { PipeTask } from '@ferrymen/fm-task-pipe';
