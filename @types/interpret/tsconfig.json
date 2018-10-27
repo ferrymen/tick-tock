@@ -1,0 +1,16 @@
+{
+  "files": ["index.d.ts", "interpret.tests.ts"],
+  "compilerOptions": {
+    "module": "commonjs",
+    "lib": ["es6", "dom"],
+    "noImplicitAny": true,
+    "noImplicitThis": true,
+    "strictNullChecks": true,
+    "strictFunctionTypes": true,
+    "baseUrl": "../",
+    "typeRoots": ["../"],
+    "types": [],
+    "noEmit": true,
+    "forceConsistentCasingInFileNames": true
+  }
+}

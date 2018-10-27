@@ -1,0 +1,26 @@
+{
+  "name": "@ferrymen/fm-cli",
+  "version": "1.0.0",
+  "main": "index.js",
+  "license": "MIT",
+  "scripts": {
+    "launch": "ts-node src/fm",
+    "build": "tsc",
+    "doc": "typedoc --mode file --name \"Cli Document\" --out doc/api"
+  },
+  "dependencies": {
+    "interpret": "^1.1.0",
+    "liftoff": "^2.5.0",
+    "yargs": "^12.0.2"
+  },
+  "devDependencies": {
+    "@types/node": "^10.12.0",
+    "@types/yargs": "^12.0.1",
+    "dtslint": "^0.3.0",
+    "ts-node": "^7.0.1",
+    "tslint": "^5.11.0",
+    "tslint-config-prettier": "^1.15.0",
+    "typedoc": "^0.13.0",
+    "typescript": "^3.1.3"
+  }
+}
