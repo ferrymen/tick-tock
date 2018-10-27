@@ -11,7 +11,8 @@
       "cwd": "${workspaceFolder}\\cli\\fm-cli",
       "program": "${workspaceFolder}\\cli\\fm-cli\\node_modules\\ts-node\\dist\\bin.js",
       "args": [
-        "${workspaceFolder}\\cli\\fm-cli\\src\\fm"
+        "${workspaceFolder}\\cli\\fm-cli\\src\\fm",
+        "run"
       ]
     }
   ]

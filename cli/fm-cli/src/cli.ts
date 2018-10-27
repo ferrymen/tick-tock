@@ -34,7 +34,7 @@ class Cli {
           process.exit(1);
         }).argv;
     } catch (error) {
-      console.log(`An error occured: ${error}`);
+      throw error;
     }
   }
 }

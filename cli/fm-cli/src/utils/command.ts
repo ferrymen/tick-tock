@@ -40,7 +40,7 @@ export default class Command {
         }
       }
     } catch (error) {
-      console.error(error);
+      throw error;
     }
 
     return commads;
