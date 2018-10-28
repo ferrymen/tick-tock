@@ -559,6 +559,7 @@ export class Container implements IContainer {
         LifeState.afterConstructor
       );
 
+      // instance obtain property start
       lifeScope.execute(
         {
           tokenKey: key,
@@ -574,6 +575,7 @@ export class Container implements IContainer {
         IocState.runtime,
         LifeState.onInit
       );
+      // instance obtain property end
 
       lifeScope.routeExecute(
         {

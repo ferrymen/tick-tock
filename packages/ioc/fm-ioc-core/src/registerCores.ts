@@ -11,6 +11,8 @@ import {
   MethodAccessor,
   CoreActions,
   AutoWired,
+  Injectable,
+  Singleton,
 } from './core';
 import { CacheManager } from './core/CacheManager';
 
@@ -43,6 +45,13 @@ export function registerCores(container: IContainer) {
   );
 
   let lifeScope = container.get(LifeScopeToken);
+
+  lifeScope.registerDecorator(
+    Injectable,
+    CoreActions.bindProvider,
+    CoreActions.cache
+  );
+  lifeScope.registerDecorator(Singleton, CoreActions.bindProvider);
 
   // interpret @AutoWired
   lifeScope.registerDecorator(
