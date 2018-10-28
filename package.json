@@ -9,6 +9,9 @@
   "devDependencies": {
     "@commitlint/cli": "^7.1.2",
     "@commitlint/config-conventional": "^7.1.2",
+    "@types/chai": "^4.1.6",
+    "@types/mocha": "^5.2.5",
+    "chai": "^4.2.0",
     "commitizen": "^2.10.1",
     "cz-lerna-changelog": "1.2.1",
     "eslint": "^5.6.1",
@@ -19,7 +22,9 @@
     "lerna": "^2.11.0",
     "lerna-changelog": "^0.8.0",
     "lint-staged": "^7.3.0",
-    "prettier": "^1.14.3"
+    "mocha": "^5.2.0",
+    "prettier": "^1.14.3",
+    "ts-node": "^7.0.1"
   },
   "lint-staged": {
     "**/*.js": [
@@ -38,5 +43,8 @@
       "commit-msg": "commitlint -E HUSKY_GIT_PARAMS",
       "pre-commit": "lint-staged"
     }
+  },
+  "dependencies": {
+    "typescript": "^3.1.3"
   }
 }
