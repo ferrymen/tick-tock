@@ -1,4 +1,5 @@
 export * from './AutorunMetadata';
+export * from './AutoWiredMetadata';
 export * from './InjectableMetadata';
 export * from './ProviderMetadata';
 export * from './TypeMetadata';
@@ -8,3 +9,4 @@ export * from './MethodMetadata';
 export * from './PropertyMetadata';
 export * from './ProvideMetadata';
 export * from './ParameterMetadata';
+export * from './ParamPropMetadata';
