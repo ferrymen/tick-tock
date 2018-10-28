@@ -38,10 +38,12 @@ export class InjectPropertyAction extends ActionComposite {
               providerMap
             );
           } else if (container.has(token)) {
+            // instance obtain property start
             data.target[prop.propertyKey] = container.resolve(
               token,
               providerMap
             );
+            // instance obtain property end
           }
         }
       });
