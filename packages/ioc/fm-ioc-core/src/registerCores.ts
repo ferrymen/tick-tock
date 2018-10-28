@@ -5,7 +5,13 @@ import { ResolverChainToken, ResolverChain } from './resolves';
 import { ProviderMap, ProviderMapToken } from './core/providers';
 import { ProviderParserToken } from './core/IProviderParser';
 import { MethodAccessorToken } from './IMethodAccessor';
-import { DefaultLifeScope, ProviderParser, MethodAccessor } from './core';
+import {
+  DefaultLifeScope,
+  ProviderParser,
+  MethodAccessor,
+  CoreActions,
+  AutoWired,
+} from './core';
 import { CacheManager } from './core/CacheManager';
 
 /**
@@ -34,6 +40,15 @@ export function registerCores(container: IContainer) {
   container.registerSingleton(
     MethodAccessorToken,
     () => new MethodAccessor(container)
+  );
+
+  let lifeScope = container.get(LifeScopeToken);
+
+  // interpret @AutoWired
+  lifeScope.registerDecorator(
+    AutoWired,
+    CoreActions.bindParameterType,
+    CoreActions.bindPropertyType
   );
 
   container.register(Date, () => new Date());

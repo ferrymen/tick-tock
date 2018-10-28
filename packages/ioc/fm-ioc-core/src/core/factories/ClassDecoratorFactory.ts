@@ -1,3 +1,4 @@
+import 'reflect-metadata';
 import { Type } from '../../types';
 import { Registration } from '../../Registration';
 import { ClassMetadata } from '../metadatas';

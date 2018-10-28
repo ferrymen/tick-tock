@@ -7,6 +7,7 @@ import {
   Injectable,
 } from '../src';
 import { SimppleAutoWried } from './debug';
+// import * as debugModule from './debug';
 
 describe('custom register test', () => {
   let container: IContainer;

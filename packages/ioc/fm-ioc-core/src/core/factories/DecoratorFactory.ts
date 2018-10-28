@@ -1,3 +1,4 @@
+import 'reflect-metadata';
 import { Type, AbstractType, ObjectMap } from '../../types';
 import {
   Metadate,

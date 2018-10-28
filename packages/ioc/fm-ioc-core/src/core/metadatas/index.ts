@@ -10,3 +10,4 @@ export * from './PropertyMetadata';
 export * from './ProvideMetadata';
 export * from './ParameterMetadata';
 export * from './ParamPropMetadata';
+export * from './InjectMetadata';
