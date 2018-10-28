@@ -43,12 +43,12 @@ export interface GComponent<T extends IComponent> extends IComponent {
   /**
    * trans all sub nodes. node first iteration.
    */
-  trans(express: Express<T, void | boolean>): void;
+  trans(express: Express<T, void | boolean>): boolean;
 
   /**
    * trans all sub nodes. node last iteration.
    */
-  transAfter(express: Express<T, void | boolean>): void;
+  transAfter(express: Express<T, void | boolean>): boolean;
 
   /**
    * route up iteration.

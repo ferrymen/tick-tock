@@ -10,3 +10,5 @@ export * from './IProviderParser';
 export * from './MethodAccessor';
 export * from './providers';
 export * from './ProviderParser';
+export * from './ActionFactory';
+export * from './ComponentLifecycle';

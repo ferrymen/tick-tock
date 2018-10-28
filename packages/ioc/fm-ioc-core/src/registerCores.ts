@@ -14,6 +14,10 @@ import { CacheManager } from './core/CacheManager';
  */
 export function registerCores(container: IContainer) {
   container.registerSingleton(
+    LifeScopeToken,
+    () => new DefaultLifeScope(container)
+  );
+  container.registerSingleton(
     CacheManagerToken,
     () => new CacheManager(container)
   );
@@ -26,6 +30,10 @@ export function registerCores(container: IContainer) {
   container.registerSingleton(
     ProviderParserToken,
     () => new ProviderParser(container)
+  );
+  container.registerSingleton(
+    MethodAccessorToken,
+    () => new MethodAccessor(container)
   );
 
   container.register(Date, () => new Date());

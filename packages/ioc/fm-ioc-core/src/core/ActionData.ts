@@ -1,6 +1,7 @@
 import { IParameter } from '../IParameter';
 import { Type, Token, Providers } from '../types';
 import { ProviderMap } from './providers/ProviderMap';
+import { IContainer } from '../IContainer';
 
 /**
  * the action execute data
@@ -51,4 +52,10 @@ export interface ActionData<T> {
    * exter providers convert to map.
    */
   providerMap?: ProviderMap;
+
+  /**
+   * container, the action raise from.
+   *
+   */
+  raiseContainer?: IContainer;
 }

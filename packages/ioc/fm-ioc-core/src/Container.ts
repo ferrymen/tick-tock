@@ -19,16 +19,23 @@ import {
   ToInstance,
   Modules,
   LoadType,
+  IocState,
 } from './types';
 import { IContainerBuilder, ContainerBuilderToken } from './IContainerBuilder';
 import { ResolverChain, ResolverChainToken } from './resolves';
 import { Registration } from './Registration';
 import { LifeScope, LifeScopeToken } from './LifeScope';
 import { IParameter } from './IParameter';
-import { ActionComponent } from './core/actions';
+import {
+  ActionComponent,
+  CacheActionData,
+  CoreActions,
+  LifeState,
+} from './core/actions';
 import { CacheManagerToken } from './ICacheManager';
 import { MethodAccessorToken } from './IMethodAccessor';
 import { registerCores } from './registerCores';
+import { ProviderParserToken } from './core';
 
 export class Container implements IContainer {
   protected provideTypes!: MapSet<Token<any>, Type<any>>;
@@ -468,5 +475,144 @@ export class Container implements IContainer {
     key: SymbolType<T>,
     ClassT?: Type<T>,
     singleton?: boolean
-  ) {}
+  ) {
+    if (!Reflect.isExtensible(ClassT)) {
+      return;
+    }
+
+    let lifeScope = this.getLifeScope();
+    let parameters = lifeScope.getConstructorParameters(ClassT);
+
+    if (!singleton) {
+      singleton = lifeScope.isSingletonType<T>(ClassT);
+    }
+
+    let factory = (...providers: Providers[]) => {
+      if (singleton && this.singleton.has(key)) {
+        return this.singleton.get(key);
+      }
+
+      if (providers.length < 1) {
+        let lifecycleData: CacheActionData = {
+          tokenKey: key,
+          targetType: ClassT,
+          // raiseContainer: this,
+          singleton: singleton,
+        };
+        lifeScope.execute(lifecycleData, CoreActions.cache);
+        if (
+          lifecycleData.execResult &&
+          lifecycleData.execResult instanceof ClassT
+        ) {
+          return lifecycleData.execResult;
+        }
+      }
+
+      let providerMap = this.get(ProviderParserToken).parse(...providers);
+
+      lifeScope.execute(
+        {
+          tokenKey: key,
+          targetType: ClassT,
+          raiseContainer: this,
+          params: parameters,
+          providers: providers,
+          providerMap: providerMap,
+          singleton: singleton,
+        },
+        IocState.runtime,
+        LifeState.beforeCreateArgs
+      );
+
+      let args = this.createSyncParams(parameters, providerMap);
+
+      lifeScope.routeExecute(
+        {
+          tokenKey: key,
+          targetType: ClassT,
+          raiseContainer: this,
+          args: args,
+          params: parameters,
+          providers: providers,
+          providerMap: providerMap,
+          singleton: singleton,
+        },
+        IocState.runtime,
+        LifeState.beforeConstructor
+      );
+
+      let instance = new ClassT(...args);
+
+      lifeScope.routeExecute(
+        {
+          tokenKey: key,
+          target: instance,
+          targetType: ClassT,
+          raiseContainer: this,
+          args: args,
+          params: parameters,
+          providers: providers,
+          providerMap: providerMap,
+          singleton: singleton,
+        },
+        IocState.runtime,
+        LifeState.afterConstructor
+      );
+
+      lifeScope.execute(
+        {
+          tokenKey: key,
+          target: instance,
+          targetType: ClassT,
+          raiseContainer: this,
+          args: args,
+          params: parameters,
+          providers: providers,
+          providerMap: providerMap,
+          singleton: singleton,
+        },
+        IocState.runtime,
+        LifeState.onInit
+      );
+
+      lifeScope.routeExecute(
+        {
+          tokenKey: key,
+          target: instance,
+          targetType: ClassT,
+          raiseContainer: this,
+          args: args,
+          params: parameters,
+          providers: providers,
+          providerMap: providerMap,
+          singleton: singleton,
+        },
+        IocState.runtime,
+        LifeState.AfterInit
+      );
+
+      lifeScope.execute(
+        {
+          tokenKey: key,
+          target: instance,
+          targetType: ClassT,
+          raiseContainer: this,
+        },
+        CoreActions.cache
+      );
+
+      return instance;
+    };
+
+    this.factories.set(key, factory);
+
+    lifeScope.routeExecute(
+      {
+        tokenKey: key,
+        targetType: ClassT,
+        raiseContainer: this,
+      },
+      IocState.design
+    );
+  }
 }

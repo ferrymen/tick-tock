@@ -127,3 +127,12 @@ export enum Mode {
    */
   traverseLast,
 }
+
+/**
+ * State of type in ioc.
+ *
+ */
+export enum IocState {
+  design = 'design',
+  runtime = 'runtime',
+}

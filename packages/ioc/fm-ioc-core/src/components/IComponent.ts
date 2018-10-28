@@ -48,7 +48,7 @@ export interface IComponent {
   /**
    * trans all sub nodes. node first iteration.
    */
-  trans(express: Express<IComponent, void | boolean>): void;
+  trans(express: Express<IComponent, void | boolean>): boolean;
 
   /**
    * trans all sub nodes. node last iteration.
@@ -56,7 +56,7 @@ export interface IComponent {
    * @param {(Express<IComponent, void | boolean>)} express
    * @memberof IComponent
    */
-  transAfter(express: Express<IComponent, void | boolean>): void;
+  transAfter(express: Express<IComponent, void | boolean>): boolean;
 
   /**
    * route up iteration.
