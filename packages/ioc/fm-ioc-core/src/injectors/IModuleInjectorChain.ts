@@ -1,6 +1,14 @@
 import { IModuleInjector } from './IModuleInjector';
 import { IContainer } from '../IContainer';
 import { Type } from '../types';
+import { InjectToken } from '../InjectToken';
+
+/**
+ * module fileter token. mast use as singlton.
+ */
+export const ModuleInjectorChainToken = new InjectToken<IModuleInjectorChain>(
+  'DI_ModuleInjectorChain'
+);
 
 /**
  * module Injector chian interface.

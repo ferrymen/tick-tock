@@ -110,7 +110,7 @@ export class ResolverChain implements IResolver {
     return false;
   }
 
-  has<T>(token: SymbolType<T>): T {
+  has<T>(token: SymbolType<T>): boolean {
     if (this.hasRegister(token)) {
       return true;
     }

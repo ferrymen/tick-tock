@@ -1,4 +1,7 @@
 export * from './actions';
+export * from './decorators';
+export * from './factories';
+export * from './metadatas';
 export * from './ActionData';
 export * from './CacheManager';
 export * from './DefaultLifeScope';

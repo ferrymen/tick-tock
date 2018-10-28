@@ -7,7 +7,23 @@
     {
       "type": "node",
       "request": "launch",
-      "name": "cli debug",
+      "name": "fm-ioc-core",
+      "program": "${workspaceFolder}/node_modules/mocha/bin/_mocha",
+      "args": [
+        "-u",
+        "tdd",
+        "--timeout",
+        "999999",
+        "--colors",
+        "-r",
+        "ts-node/register",
+        "${workspaceFolder}/packages/ioc/fm-ioc-core/test/**/*.spec.ts"
+      ],
+    },
+    {
+      "type": "node",
+      "request": "launch",
+      "name": "fm-cli",
       "cwd": "${workspaceFolder}\\packages\\cli\\fm-cli",
       "program": "${workspaceFolder}\\packages\\cli\\fm-cli\\node_modules\\ts-node\\dist\\bin.js",
       "args": [

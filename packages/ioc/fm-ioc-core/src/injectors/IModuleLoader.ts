@@ -1,4 +1,12 @@
 import { LoadType, Modules, Type } from '../types';
+import { InjectToken } from '../InjectToken';
+
+/**
+ * module loader token.
+ */
+export const ModuleLoaderToken = new InjectToken<IModuleLoader>(
+  'DI_ModuleLoader'
+);
 
 export interface IModuleLoader {
   /**
