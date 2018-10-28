@@ -15,6 +15,7 @@ import {
   MiddleSchoolStudent,
   InjMClassRoom,
   MClassRoom,
+  CollegeClassRoom,
 } from './debug';
 // import * as debugModule from './debug';
 
@@ -67,5 +68,13 @@ describe('custom register test', () => {
     expect(instance).not.undefined;
     expect(instance.leader).not.undefined;
     expect(instance.leader.sayHi()).eq('I am a middle school student');
+  });
+
+  it('should auto create constructor params with spec @Param class.', () => {
+    container.register(CollegeClassRoom);
+    let instance = container.get(CollegeClassRoom);
+    expect(instance).not.undefined;
+    expect(instance.leader).not.undefined;
+    expect(instance.leader.sayHi()).eq('I am a college student');
   });
 });

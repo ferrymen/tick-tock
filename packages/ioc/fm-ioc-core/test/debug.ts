@@ -75,3 +75,12 @@ export class CollegeStudent extends Student {
     return 'I am a college student';
   }
 }
+
+@Injectable
+export class CollegeClassRoom {
+  constructor(
+    @Param(CollegeStudent)
+    @AutoWired(CollegeStudent)
+    public leader: Student
+  ) {}
+}
