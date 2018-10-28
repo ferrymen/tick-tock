@@ -6,6 +6,7 @@ import {
   ContainerToken,
   IContainer,
   Param,
+  Registration,
 } from '../src';
 
 export class SimppleAutoWried {
@@ -81,6 +82,31 @@ export class CollegeClassRoom {
   constructor(
     @Param(CollegeStudent)
     @AutoWired(CollegeStudent)
+    public leader: Student
+  ) {}
+}
+
+@Injectable
+export class InjCollegeClassRoom {
+  constructor(
+    // all below decorator can work, also @AutoWired, @Param is.
+    // @Inject(new Registration(Student, 'college')) // need CollegeStudent also register.
+    // @Inject({ provider: CollegeStudent })
+    // @Inject({ provider: Student, alias: 'college' }) //need CollegeStudent also register.
+    // @Inject({ type: CollegeStudent })
+    @Inject(CollegeStudent) public leader: Student
+  ) {}
+}
+
+@Injectable
+export class InjCollegeAliasClassRoom {
+  constructor(
+    // all below decorator can work, also @AutoWired, @Param is.
+    // @Inject(CollegeStudent)
+    // @Inject({ provider: CollegeStudent })
+    // @Inject({ provider: Student, alias: 'college' }) // need CollegeStudent also register.
+    // @Inject({ type: CollegeStudent })
+    @Inject(new Registration(Student, 'college')) // need CollegeStudent also register.
     public leader: Student
   ) {}
 }

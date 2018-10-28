@@ -16,6 +16,9 @@ import {
   InjMClassRoom,
   MClassRoom,
   CollegeClassRoom,
+  InjCollegeClassRoom,
+  CollegeStudent,
+  InjCollegeAliasClassRoom,
 } from './debug';
 // import * as debugModule from './debug';
 
@@ -73,6 +76,23 @@ describe('custom register test', () => {
   it('should auto create constructor params with spec @Param class.', () => {
     container.register(CollegeClassRoom);
     let instance = container.get(CollegeClassRoom);
+    expect(instance).not.undefined;
+    expect(instance.leader).not.undefined;
+    expect(instance.leader.sayHi()).eq('I am a college student');
+  });
+
+  it('should auto create constructor params with spec @Inject class.', () => {
+    container.register(InjCollegeClassRoom);
+    let instance = container.get(InjCollegeClassRoom);
+    expect(instance).not.undefined;
+    expect(instance.leader).not.undefined;
+    expect(instance.leader.sayHi()).eq('I am a college student');
+  });
+
+  it('should auto create constructor params with spec @Inject class with alias.', () => {
+    container.register(CollegeStudent);
+    container.register(InjCollegeAliasClassRoom);
+    let instance = container.get(InjCollegeAliasClassRoom);
     expect(instance).not.undefined;
     expect(instance.leader).not.undefined;
     expect(instance.leader.sayHi()).eq('I am a college student');
