@@ -7,6 +7,7 @@ import {
   Injectable,
   Inject,
   Singleton,
+  Param,
 } from '../src';
 import {
   SimppleAutoWried,
@@ -29,6 +30,7 @@ describe('custom register test', () => {
     expect(Injectable.toString()).eq('@Injectable');
     expect(Singleton.toString()).eq('@Singleton');
     expect(Inject.toString()).eq('@Inject');
+    expect(Param.toString()).eq('@Param');
   });
 
   it('should auto wried property', () => {
