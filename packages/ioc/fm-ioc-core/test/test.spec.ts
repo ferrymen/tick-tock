@@ -8,6 +8,7 @@ import {
   Inject,
   Singleton,
   Param,
+  Registration,
 } from '../src';
 import {
   SimppleAutoWried,
@@ -19,6 +20,11 @@ import {
   InjCollegeClassRoom,
   CollegeStudent,
   InjCollegeAliasClassRoom,
+  Student,
+  StingMClassRoom,
+  StringIdTest,
+  SymbolCollegeClassRoom,
+  SymbolIdest,
 } from './debug';
 // import * as debugModule from './debug';
 
@@ -96,5 +102,42 @@ describe('custom register test', () => {
     expect(instance).not.undefined;
     expect(instance.leader).not.undefined;
     expect(instance.leader.sayHi()).eq('I am a college student');
+  });
+
+  it('should provider implement sub class to abstract class', () => {
+    container.register(MiddleSchoolStudent);
+    container.register(CollegeStudent);
+
+    let instance = container.get(Student);
+    expect(instance).not.undefined;
+    expect(instance.sayHi()).eq('I am a middle school student');
+
+    let instance2 = container.get(new Registration(Student, 'college'));
+    expect(instance2).not.undefined;
+    expect(instance2.sayHi()).eq('I am a college student');
+  });
+
+  it('should work with sting id to get class', () => {
+    container.register(MiddleSchoolStudent);
+    // have not register StringClassRoom
+    container.register(StingMClassRoom);
+    container.register(StringIdTest);
+
+    let instance = container.get(StringIdTest);
+    expect(instance).not.undefined;
+    expect(instance.room).not.undefined;
+    expect(instance.room.leader).not.undefined;
+    expect(instance.room.leader.sayHi()).eq('I am a middle school student');
+  });
+
+  it('should work with Symbol id to get class', () => {
+    container.register(SymbolCollegeClassRoom);
+    container.register(SymbolIdest);
+
+    let instance = container.get(SymbolIdest);
+    expect(instance).not.undefined;
+    expect(instance.room).not.undefined;
+    expect(instance.room.leader).not.undefined;
+    expect(instance.room.leader.sayHi()).eq('I am a college student');
   });
 });
