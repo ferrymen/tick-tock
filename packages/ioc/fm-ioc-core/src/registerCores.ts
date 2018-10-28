@@ -13,6 +13,7 @@ import {
   AutoWired,
   Injectable,
   Singleton,
+  Inject,
 } from './core';
 import { CacheManager } from './core/CacheManager';
 
@@ -56,6 +57,12 @@ export function registerCores(container: IContainer) {
   // interpret @AutoWired
   lifeScope.registerDecorator(
     AutoWired,
+    CoreActions.bindParameterType,
+    CoreActions.bindPropertyType
+  );
+
+  lifeScope.registerDecorator(
+    Inject,
     CoreActions.bindParameterType,
     CoreActions.bindPropertyType
   );
