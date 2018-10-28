@@ -14,6 +14,7 @@ import {
   ClassRoom,
   MiddleSchoolStudent,
   InjMClassRoom,
+  MClassRoom,
 } from './debug';
 // import * as debugModule from './debug';
 
@@ -55,6 +56,14 @@ describe('custom register test', () => {
     container.register(MiddleSchoolStudent);
     container.register(InjMClassRoom);
     let instance = container.get(InjMClassRoom);
+    expect(instance).not.undefined;
+    expect(instance.leader).not.undefined;
+    expect(instance.leader.sayHi()).eq('I am a middle school student');
+  });
+
+  it('should auto create prop with spec @Param class.', () => {
+    container.register(MClassRoom);
+    let instance = container.get(MClassRoom);
     expect(instance).not.undefined;
     expect(instance.leader).not.undefined;
     expect(instance.leader.sayHi()).eq('I am a middle school student');

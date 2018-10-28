@@ -14,6 +14,7 @@ import {
   Injectable,
   Singleton,
   Inject,
+  Param,
 } from './core';
 import { CacheManager } from './core/CacheManager';
 
@@ -63,6 +64,11 @@ export function registerCores(container: IContainer) {
 
   lifeScope.registerDecorator(
     Inject,
+    CoreActions.bindParameterType,
+    CoreActions.bindPropertyType
+  );
+  lifeScope.registerDecorator(
+    Param,
     CoreActions.bindParameterType,
     CoreActions.bindPropertyType
   );

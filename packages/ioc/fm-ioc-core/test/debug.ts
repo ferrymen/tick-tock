@@ -5,6 +5,7 @@ import {
   Inject,
   ContainerToken,
   IContainer,
+  Param,
 } from '../src';
 
 export class SimppleAutoWried {
@@ -56,4 +57,21 @@ export class InjMClassRoom {
   // @Inject({ type: MiddleSchoolStudent })
   leader: Student;
   constructor() {}
+}
+
+@Injectable()
+export class MClassRoom {
+  @AutoWired(MiddleSchoolStudent)
+  leader: Student;
+  constructor() {}
+}
+
+@Injectable({ provide: Student, alias: 'college' })
+export class CollegeStudent extends Student {
+  constructor() {
+    super();
+  }
+  sayHi() {
+    return 'I am a college student';
+  }
 }
