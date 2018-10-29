@@ -17,6 +17,8 @@
         "--colors",
         "-r",
         "ts-node/register",
+        "-r",
+        "tsconfig-paths/register",
         "${workspaceFolder}/packages/aop/fm-aop/test/**/*.spec.ts"
       ],
     },
