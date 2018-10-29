@@ -108,6 +108,40 @@ export class MethodAccessor implements IMethodAccessor {
     target?: any,
     ...providers: Providers[]
   ): T {
-    throw new Error('Method not implemented.');
+    if (!target) {
+      target = this.container.resolve(token, ...providers);
+    }
+    let targetClass = this.container.getTokenImpl(token);
+    if (!targetClass) {
+      throw Error(token.toString() + ' is not implements by any class.');
+    }
+
+    if (target && isFunction(target[propertyKey])) {
+      let actionData = {
+        target: target,
+        targetType: targetClass,
+        propertyKey: propertyKey,
+      } as BindParameterProviderActionData;
+      let lifeScope = this.container.getLifeScope();
+      lifeScope.execute(
+        actionData,
+        LifeState.onInit,
+        CoreActions.bindParameterProviders
+      );
+
+      providers = providers.concat(actionData.execResult);
+      let parameters = lifeScope.getMethodParameters(
+        targetClass,
+        target,
+        propertyKey
+      );
+      let paramInstances = this.createSyncParams(parameters, ...providers);
+
+      return target[propertyKey](...paramInstances) as T;
+    } else {
+      throw new Error(
+        `type: ${targetClass} has no method ${propertyKey.toString()}.`
+      );
+    }
   }
 }
