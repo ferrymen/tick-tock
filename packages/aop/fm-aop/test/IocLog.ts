@@ -1,5 +1,5 @@
 import { Singleton } from '@ferrymen/fm-ioc-core';
-import { Aspect } from '../src';
+import { Aspect, Around } from '../src';
 
 @Singleton
 @Aspect
