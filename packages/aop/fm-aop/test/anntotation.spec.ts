@@ -27,6 +27,7 @@ describe('aop test', () => {
     say() {
       return 'Mama';
     }
+    sayMM() {}
   }
 
   @Injectable('Test3')

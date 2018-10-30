@@ -1,5 +1,5 @@
 import { Singleton } from '@ferrymen/fm-ioc-core';
-import { Aspect, Around } from '../src';
+import { Aspect, Around, Joinpoint } from '../src';
 
 @Singleton
 @Aspect
@@ -20,17 +20,17 @@ export class IocLog {
     );
   }
 
-  @Before('execution(*)')
-  beforelog(joinPoint: Joinpoint) {
-    console.log(
-      'aspect execution Before log, method name:',
-      joinPoint.fullName,
-      ' state:',
-      joinPoint.state,
-      ' returning:',
-      joinPoint.returning,
-      ' throwing:',
-      joinPoint.throwing
-    );
-  }
+  // @Before('execution(*)')
+  // beforelog(joinPoint: Joinpoint) {
+  //   console.log(
+  //     'aspect execution Before log, method name:',
+  //     joinPoint.fullName,
+  //     ' state:',
+  //     joinPoint.state,
+  //     ' returning:',
+  //     joinPoint.returning,
+  //     ' throwing:',
+  //     joinPoint.throwing
+  //   );
+  // }
 }
