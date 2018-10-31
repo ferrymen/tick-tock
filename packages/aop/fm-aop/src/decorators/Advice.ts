@@ -96,3 +96,12 @@ export function createAdviceDecorator<T extends AdviceMetadata>(
     }
   ) as IAdviceDecorator<T>;
 }
+
+/**
+ * aop advice decorator.
+ *
+ * @Advice
+ */
+export const Advice: IAdviceDecorator<AdviceMetadata> = createAdviceDecorator(
+  'Advice'
+);
