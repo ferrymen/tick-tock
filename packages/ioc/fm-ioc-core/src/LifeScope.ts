@@ -3,6 +3,7 @@ import { ActionComponent } from './core/actions';
 import { InjectToken } from './InjectToken';
 import { Type, Express } from './types';
 import { IParameter } from './IParameter';
+import { MethodMetadata } from './core/metadatas';
 
 /**
  * life scope interface symbol.
@@ -91,6 +92,15 @@ export interface LifeScope {
     instance: T,
     propertyKey: string
   ): IParameter[];
+
+  /**
+   * get method metadatas
+   *
+   */
+  getMethodMetadatas<T>(
+    type: Type<T>,
+    propertyKey: string | symbol
+  ): MethodMetadata[];
 }
 
 /**

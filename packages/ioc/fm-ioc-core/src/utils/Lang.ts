@@ -146,4 +146,15 @@ export namespace Lang {
     }
     return null;
   }
+
+  /**
+   * first.
+   *
+   */
+  export function first<T>(list: T[]): T {
+    if (isArray(list) && list.length) {
+      return list[0];
+    }
+    return null;
+  }
 }
