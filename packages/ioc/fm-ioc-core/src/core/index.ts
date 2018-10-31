@@ -12,3 +12,4 @@ export * from './providers';
 export * from './ProviderParser';
 export * from './ActionFactory';
 export * from './ComponentLifecycle';
+export * from './IRecognizer';

@@ -9,9 +9,10 @@ import {
   getOwnTypeMetadata,
   DecoratorType,
   getOwnParamerterNames,
+  getOwnMethodMetadata,
 } from './factories';
-import { Type, Express, Token, IocState } from '../types';
-import { ClassMetadata } from './metadatas';
+import { Type, Express, Token, IocState, ObjectMap } from '../types';
+import { ClassMetadata, MethodMetadata } from './metadatas';
 import { Singleton } from './decorators';
 import { ActionFactory } from './ActionFactory';
 
@@ -292,5 +293,18 @@ export class DefaultLifeScope implements LifeScope {
     propertyKey: string
   ): IParameter[] {
     return this.getParameters(type, instance, propertyKey);
+  }
+
+  getMethodMetadatas<T>(type: Type<T>, propertyKey: string): MethodMetadata[] {
+    let metadatas = [];
+    this.getMethodDecorators().forEach(dec => {
+      let metas: ObjectMap<MethodMetadata[]> = getOwnMethodMetadata<
+        MethodMetadata
+      >(dec.name, type);
+      if (metas.hasOwnProperty(propertyKey)) {
+        metadatas = metadatas.concat(metas[propertyKey] || []);
+      }
+    });
+    return metadatas;
   }
 }
