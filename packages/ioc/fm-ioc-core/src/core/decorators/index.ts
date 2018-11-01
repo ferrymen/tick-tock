@@ -6,3 +6,4 @@ export * from './Singleton';
 export * from './AutoRun';
 export * from './Param';
 export * from './Method';
+export * from './Abstract';
