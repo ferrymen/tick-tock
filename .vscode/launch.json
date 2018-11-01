@@ -7,6 +7,24 @@
     {
       "type": "node",
       "request": "launch",
+      "name": "fm-boot",
+      "program": "${workspaceFolder}/node_modules/mocha/bin/_mocha",
+      "args": [
+        "-u",
+        "tdd",
+        "--timeout",
+        "999999",
+        "--colors",
+        "-r",
+        "ts-node/register",
+        "-r",
+        "tsconfig-paths/register",
+        "${workspaceFolder}/packages/boot/fm-boot/test/**/*.spec.ts"
+      ],
+    },
+    {
+      "type": "node",
+      "request": "launch",
       "name": "fm-log",
       "program": "${workspaceFolder}/node_modules/mocha/bin/_mocha",
       "args": [
