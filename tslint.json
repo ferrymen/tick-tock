@@ -1,0 +1,9 @@
+{
+  "extends": ["tslint:recommended", "tslint-config-prettier"],
+  "rules": {
+    "no-console": [false],
+    "non-arrow": [false],
+    // "no-implicit-dependencies": [true, ["@ferrymen"]],
+    // "no-submodule-imports": [true, "@ferrymen"]
+  }
+}
