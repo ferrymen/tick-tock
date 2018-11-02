@@ -42,15 +42,6 @@
       "*": [
         "node_modules/*",
         "@types/*"
-      ],
-      "@ferrymen/fm-task-pipe": [
-        "./packages/task/fm-task-pipe"
-      ],
-      "@ferrymen/fm-ioc-core": [
-        "./packages/ioc/fm-ioc-core/src"
-      ],
-      "@ferrymen/fm-aop": [
-        "./packages/aop/fm-aop/src"
       ]
     },                           /* A series of entries which re-map imports to lookup locations relative to the 'baseUrl'. */
     // "rootDirs": [],                        /* List of root folders whose combined content represents the structure of the project at runtime. */
