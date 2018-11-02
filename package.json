@@ -24,7 +24,8 @@
     "lint-staged": "^7.3.0",
     "mocha": "^5.2.0",
     "prettier": "^1.14.3",
-    "ts-node": "^7.0.1"
+    "ts-node": "^7.0.1",
+    "tsconfig-paths": "^3.6.0"
   },
   "lint-staged": {
     "**/*.js": [
