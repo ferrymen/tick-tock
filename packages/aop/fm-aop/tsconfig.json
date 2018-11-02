@@ -1,3 +1,14 @@
 {
-  "extends": "../../../tsconfig.json"
+  "extends": "../../../tsconfig.json",
+  "compilerOptions": {
+    "baseUrl": "../../../packages",                       /* Base directory to resolve non-absolute module names. */
+    "paths": {
+      "@ferrymen/fm-task-pipe": [
+        "task/fm-task-pipe"
+      ],
+      "@ferrymen/fm-ioc-core": [
+        "ioc/fm-ioc-core/src"
+      ]
+    },
+  }
 }
