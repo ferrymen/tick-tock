@@ -17,4 +17,10 @@ describe('auto register with build', () => {
     // console.log(result);
     expect(result).eq('simple task');
   });
+
+  it('should bootstrap with single task via name or provider.', async () => {
+    let result = await container.use(SimpleTask).bootstrap('test');
+    // console.log(result);
+    expect(result.resultValue).eq('simple task');
+  });
 });
