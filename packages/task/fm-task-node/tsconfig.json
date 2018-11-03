@@ -1,0 +1,11 @@
+{
+  "extends": "../../../tsconfig.json",
+  "compilerOptions": {
+    "baseUrl": "../../../packages",
+    "paths": {
+      "@ferrymen/fm-boot": [
+        "boot/fm-boot/src"
+      ],
+    },
+  }
+}
