@@ -11,6 +11,7 @@ import {
   InjMClassRoom,
   InjCollegeClassRoom,
   Student,
+  StringIdTest,
 } from './debug';
 
 describe('auto register with build', () => {
@@ -82,5 +83,14 @@ describe('auto register with build', () => {
     expect(instance2).not.undefined;
     expect(instance2.join).instanceOf(Date);
     expect(instance2.sayHi()).eq('I am a college student');
+  });
+
+  it('should work with sting id to get class', () => {
+    let instance = container.get(StringIdTest);
+    expect(instance).not.undefined;
+    expect(instance.room).not.undefined;
+    expect(instance.room.leader).not.undefined;
+    expect(instance.room.leader.join).instanceOf(Date);
+    expect(instance.room.leader.sayHi()).eq('I am a middle school student');
   });
 });

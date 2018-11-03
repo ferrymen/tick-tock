@@ -96,3 +96,20 @@ export class InjCollegeClassRoom {
     @Inject(CollegeStudent) public leader: Student
   ) {}
 }
+
+@Injectable('StringClassRoom')
+export class StingMClassRoom {
+  // @Inject(MiddleSchoolStudent)
+  @Inject
+  // @Inject({ type: MiddleSchoolStudent })
+  leader: Student;
+  constructor() {}
+}
+
+export interface IClassRoom {
+  leader: Student;
+}
+
+export class StringIdTest {
+  constructor(@Inject('StringClassRoom') public room: IClassRoom) {}
+}
