@@ -8,5 +8,11 @@
   },
   "keywords": [],
   "author": "",
-  "license": "ISC"
+  "license": "ISC",
+  "devDependencies": {
+    "chalk": "^2.4.1",
+    "pretty-hrtime": "^1.0.3",
+    "rxjs": "^6.3.3",
+    "time-stamp": "^2.2.0"
+  }
 }
