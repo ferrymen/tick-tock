@@ -12,6 +12,7 @@ import {
   InjCollegeClassRoom,
   Student,
   StringIdTest,
+  SymbolIdest,
 } from './debug';
 
 describe('auto register with build', () => {
@@ -92,5 +93,16 @@ describe('auto register with build', () => {
     expect(instance.room.leader).not.undefined;
     expect(instance.room.leader.join).instanceOf(Date);
     expect(instance.room.leader.sayHi()).eq('I am a middle school student');
+  });
+
+  it('should work with Symbol id to get class', () => {
+    let instance = container.get(SymbolIdest);
+    expect(instance).not.undefined;
+    expect(instance.container).not.undefined;
+    expect(instance.room).not.undefined;
+    expect(instance.room.leader).not.undefined;
+    expect(instance.room.leader.join).instanceOf(Date);
+    expect(instance.room.leader.container).not.undefined;
+    expect(instance.room.leader.sayHi()).eq('I am a college student');
   });
 });

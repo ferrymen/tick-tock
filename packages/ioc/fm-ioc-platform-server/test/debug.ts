@@ -113,3 +113,14 @@ export interface IClassRoom {
 export class StringIdTest {
   constructor(@Inject('StringClassRoom') public room: IClassRoom) {}
 }
+
+export const CollClassRoom = Symbol('CollegeClassRoom');
+
+export class SymbolIdest {
+  @Inject(CollClassRoom)
+  public room: IClassRoom;
+
+  @Inject(ContainerToken)
+  public container: IContainer;
+  constructor(@Inject('StringClassRoom') public room2: IClassRoom) {}
+}
