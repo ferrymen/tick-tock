@@ -8,6 +8,9 @@
       "type": "node",
       "request": "launch",
       "name": "fm-ioc-platform-server",
+      "env": {
+        "TS_NODE_PROJECT": "${workspaceFolder}/packages/ioc/fm-ioc-platform-server/tsconfig.json"
+      },
       "program": "${workspaceFolder}/node_modules/mocha/bin/_mocha",
       "args": [
         "-u",
@@ -15,8 +18,6 @@
         "--timeout",
         "999999",
         "--colors",
-        "--project",
-        "${workspaceFolder}/packages/ioc/fm-ioc-platform-server/tsconfig.json",
         "-r",
         "ts-node/register",
         "-r",
