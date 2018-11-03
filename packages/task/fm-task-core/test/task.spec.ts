@@ -1,6 +1,6 @@
 import 'mocha';
 import { expect } from 'chai';
-import { ITaskContainer, ActivityRunner } from '../src';
+import { ITaskContainer, ActivityRunner, SequenceActivity } from '../src';
 import { TaskContainer } from './mock';
 import { SimpleTask, SimpleCTask } from './simples.task';
 
@@ -32,6 +32,24 @@ describe('auto register with build', () => {
   it('should bootstrap with component task via name or provider.', async () => {
     let result = await container.use(SimpleCTask).bootstrap('comptest');
     // console.log('comptest:' , result.activity, result.activityInstance);
+    expect(result.resultValue).eq('component task');
+  });
+
+  it('should bootstrap with IConfigure.', async () => {
+    let result = await container.bootstrap({
+      name: 'test1',
+      activity: SequenceActivity,
+      sequence: [
+        {
+          name: 'test------1',
+          task: SimpleTask,
+        },
+        {
+          name: 'test------2',
+          task: SimpleCTask,
+        },
+      ],
+    });
     expect(result.resultValue).eq('component task');
   });
 });
