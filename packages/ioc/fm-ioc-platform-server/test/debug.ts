@@ -5,6 +5,7 @@ import {
   Inject,
   ContainerToken,
   IContainer,
+  Param,
 } from '@ferrymen/fm-ioc-core';
 
 export class SimppleAutoWried {
@@ -53,4 +54,23 @@ export class MClassRoom {
   @AutoWired(MiddleSchoolStudent)
   leader: Student;
   constructor() {}
+}
+
+@Injectable({ provide: Student, alias: 'college' })
+export class CollegeStudent extends Student {
+  constructor() {
+    super();
+  }
+  sayHi() {
+    return 'I am a college student';
+  }
+}
+
+@Injectable
+export class CollegeClassRoom {
+  constructor(
+    @Param(CollegeStudent)
+    @AutoWired(CollegeStudent)
+    public leader: Student
+  ) {}
 }
