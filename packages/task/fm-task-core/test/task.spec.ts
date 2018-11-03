@@ -2,6 +2,7 @@ import 'mocha';
 import { expect } from 'chai';
 import { ITaskContainer, ActivityRunner } from '../src';
 import { TaskContainer } from './mock';
+import { SimpleTask } from './simples.task';
 
 describe('auto register with build', () => {
   let container: ITaskContainer;

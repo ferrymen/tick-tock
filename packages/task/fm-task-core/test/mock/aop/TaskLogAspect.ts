@@ -1,6 +1,6 @@
 import { Aspect, Around, Joinpoint, JoinpointState } from '@ferrymen/fm-aop';
 
-import { Task } from 'task/fm-task-core/src';
+import { Task } from '../../../src';
 
 import { LoggerAspect } from '@ferrymen/fm-log';
 

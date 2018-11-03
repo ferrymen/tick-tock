@@ -4,5 +4,6 @@ export * from './metadatas';
 export * from './decorators';
 export * from './injectors';
 export * from './activities';
+export * from './aop';
 export * from './DefaultTaskContainer';
 export * from './CoreModule';

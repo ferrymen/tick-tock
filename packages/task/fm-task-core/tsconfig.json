@@ -14,6 +14,9 @@
       ],
       "@ferrymen/fm-boot": [
         "boot/fm-boot/src"
+      ],
+      "@ferrymen/fm-ioc-platform-server/*": [
+        "ioc/fm-ioc-platform-server/*"
       ]
     },
   }

@@ -6,7 +6,7 @@ import {
   ContainerToken,
   IContainer,
 } from '@ferrymen/fm-ioc-core';
-import { IActivityRunner, ActivityRunner } from 'task/fm-task-core/src';
+import { IActivityRunner, ActivityRunner } from '../../../src';
 import chalk from 'chalk';
 import timestamp from 'time-stamp';
 import prettyTime from 'pretty-hrtime';

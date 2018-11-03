@@ -5,9 +5,10 @@ import {
   DefaultTaskContainer,
   Active,
   IActivityRunner,
-} from 'task/fm-task-core/src';
+} from '../../src';
 import { IApplicationBuilder } from '@ferrymen/fm-boot';
 import { LoadType } from '@ferrymen/fm-ioc-core';
+import { ApplicationBuilder } from '@ferrymen/fm-ioc-platform-server/bootstrap';
 import chalk from 'chalk';
 import { TaskLogAspect, RunnerLogAspect } from './aop';
 

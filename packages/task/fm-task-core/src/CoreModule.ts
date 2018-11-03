@@ -6,6 +6,11 @@ import {
   CoreActions,
 } from '@ferrymen/fm-ioc-core';
 import { Workflow, Task } from './decorators';
+import { InputDataToken } from './core';
+import * as injectors from './injectors';
+import * as activites from './activities';
+import * as core from './core';
+import { RunAspect } from './aop';
 
 @IocExt('setup')
 export class CoreModule {
@@ -31,11 +36,11 @@ export class CoreModule {
       CoreActions.componentAfterInit
     );
 
-    // container.bindProvider(InputDataToken, null);
-    // container
-    //   .use(injectors)
-    //   .use(core)
-    //   .register(RunAspect)
-    //   .use(activites);
+    container.bindProvider(InputDataToken, null);
+    container
+      .use(injectors)
+      .use(core)
+      .register(RunAspect)
+      .use(activites);
   }
 }
