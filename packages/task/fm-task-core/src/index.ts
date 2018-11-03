@@ -6,4 +6,5 @@ export * from './decorators';
 export * from './injectors';
 export * from './activities';
 export * from './aop';
+export * from './utils';
 export * from './CoreModule';

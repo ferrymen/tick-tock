@@ -15,7 +15,7 @@ export * from './IActivityRunner';
 export * from './ActivityRunner';
 export * from './ActivityContext';
 export * from './HandleActivity';
-// export * from './ChainActivity';
+export * from './ChainActivity';
 
 export * from './OnActivityInit';
 export * from './uuid';
