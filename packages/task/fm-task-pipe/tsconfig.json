@@ -1,3 +1,20 @@
 {
-  "extends": "../../../tsconfig.json"
+  "extends": "../../../tsconfig.json",
+  "compilerOptions": {
+    "baseUrl": "../../../packages",
+    "paths": {
+      "@ferrymen/fm-ioc-core": [
+        "ioc/fm-ioc-core/src"
+      ],
+      "@ferrymen/fm-boot": [
+        "boot/fm-boot/src"
+      ],
+      "@ferrymen/fm-task-core": [
+        "task/fm-task-core/src"
+      ],
+      "@ferrymen/fm-task-node": [
+        "task/fm-task-node/src"
+      ],
+    },
+  }
 }
