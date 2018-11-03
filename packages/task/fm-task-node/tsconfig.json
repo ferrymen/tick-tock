@@ -3,8 +3,20 @@
   "compilerOptions": {
     "baseUrl": "../../../packages",
     "paths": {
+      // "*": [
+      //   "task/fm-task-node/node_modules/*"
+      // ],
+      "@ferrymen/fm-ioc-core": [
+        "ioc/fm-ioc-core/src"
+      ],
       "@ferrymen/fm-boot": [
         "boot/fm-boot/src"
+      ],
+      "@ferrymen/fm-ioc-platform-server": [
+        "ioc/fm-ioc-platform-server/src"
+      ],
+      "@ferrymen/fm-task-core": [
+        "task/fm-task-core/src"
       ],
     },
   }

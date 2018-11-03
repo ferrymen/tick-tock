@@ -8,5 +8,17 @@
   },
   "keywords": [],
   "author": "",
-  "license": "ISC"
+  "license": "ISC",
+  "dependencies": {
+    "chokidar": "^2.0.4",
+    "del": "^3.0.0",
+    "execa": "^1.0.0",
+    "globby": "^8.0.1",
+    "minimatch": "^3.0.4",
+    "minimist": "^1.2.0",
+    "rollup": "^0.66.6",
+    "rxjs": "^6.3.3",
+    "shelljs": "^0.8.2",
+    "typescript": "^3.1.3"
+  }
 }
