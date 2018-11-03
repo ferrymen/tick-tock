@@ -5,6 +5,9 @@
     "paths": {
       "@ferrymen/fm-ioc-core": [
         "ioc/fm-ioc-core/src"
+      ],
+      "@ferrymen/fm-boot": [
+        "boot/fm-boot/src"
       ]
     },
   }

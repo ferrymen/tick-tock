@@ -3,3 +3,4 @@ export * from './Around';
 export * from './Advice';
 export * from './NonePointcut';
 export * from './Before';
+export * from './AfterReturning';
