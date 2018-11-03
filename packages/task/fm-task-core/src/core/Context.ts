@@ -14,7 +14,11 @@ import { AppConfigureToken } from '@ferrymen/fm-boot';
 import { isFunction } from 'util';
 import { ActivityBuilderToken } from './IActivityBuilder';
 import { ActivityBuilder } from './ActivityBuilder';
-import { ActivityConfigure, Expression } from './ActivityConfigure';
+import {
+  ActivityConfigure,
+  Expression,
+  AsyncResult,
+} from './ActivityConfigure';
 import { IActivity } from './IActivity';
 import { ActivityContext } from './ActivityContext';
 import { Activity } from './Activity';
@@ -53,9 +57,13 @@ export class Context implements IContext {
       if (isClass(target)) {
         return target as any;
       }
-      // return target(this, config);
+      // TS2349: Cannot invoke an expression whose type lacks a call signature.
+      return (target as ((
+        context?: IContext,
+        config?: ActivityConfigure
+      ) => T))(this, config);
     } else {
-      return target as any;
+      return target as T;
     }
   }
 
@@ -69,7 +77,8 @@ export class Context implements IContext {
     ctx?: ActivityContext
   ): Promise<T> {
     if (isFunction(expression)) {
-      // return expression(target, ctx);
+      // TS2349: Cannot invoke an expression whose type lacks a call signature.
+      return (expression as AsyncResult<T>)(target, ctx);
     } else if (isPromise(expression)) {
       return expression;
     } else if (expression instanceof Activity) {
