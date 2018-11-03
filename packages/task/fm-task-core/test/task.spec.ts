@@ -2,7 +2,7 @@ import 'mocha';
 import { expect } from 'chai';
 import { ITaskContainer, ActivityRunner, SequenceActivity } from '../src';
 import { TaskContainer } from './mock';
-import { SimpleTask, SimpleCTask } from './simples.task';
+import { SimpleTask, SimpleCTask, TaskModuleTest } from './simples.task';
 
 describe('auto register with build', () => {
   let container: ITaskContainer;
@@ -50,6 +50,11 @@ describe('auto register with build', () => {
         },
       ],
     });
+    expect(result.resultValue).eq('component task');
+  });
+
+  it('should bootstrap with meta IConfigure.', async () => {
+    let result = await container.bootstrap(TaskModuleTest);
     expect(result.resultValue).eq('component task');
   });
 });

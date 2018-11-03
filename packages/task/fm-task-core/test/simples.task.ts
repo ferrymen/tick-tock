@@ -21,3 +21,21 @@ export class SimpleCTask extends SequenceActivity {
     });
   }
 }
+
+@Task({
+  name: 'test-module',
+  activity: SequenceActivity,
+  sequence: [
+    {
+      name: 'test------3',
+      task: SimpleTask,
+    },
+    {
+      name: 'test------4',
+      task: SimpleCTask,
+    },
+  ],
+})
+export class TaskModuleTest {
+  // extends SequenceActivity {
+}
