@@ -8,6 +8,7 @@ import {
   ClassRoom,
   MClassRoom,
   CollegeClassRoom,
+  InjMClassRoom,
 } from './debug';
 
 describe('auto register with build', () => {
@@ -49,5 +50,13 @@ describe('auto register with build', () => {
     expect(instance.leader).not.undefined;
     expect(instance.leader.join).instanceOf(Date);
     expect(instance.leader.sayHi()).eq('I am a college student');
+  });
+
+  it('should auto create prop with spec @Inject class.', () => {
+    let instance = container.get(InjMClassRoom);
+    expect(instance).not.undefined;
+    expect(instance.leader).not.undefined;
+    expect(instance.leader.join).instanceOf(Date);
+    expect(instance.leader.sayHi()).eq('I am a middle school student');
   });
 });

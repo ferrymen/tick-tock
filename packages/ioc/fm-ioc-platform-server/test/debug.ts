@@ -37,7 +37,7 @@ export abstract class Student {
   abstract sayHi(): string;
 }
 
-// @Injectable({ provide: Student })
+@Injectable({ provide: Student })
 // @Injectable()
 // @Injectable
 export class MiddleSchoolStudent extends Student {
@@ -73,4 +73,13 @@ export class CollegeClassRoom {
     @AutoWired(CollegeStudent)
     public leader: Student
   ) {}
+}
+
+@Injectable
+export class InjMClassRoom {
+  // @Inject(MiddleSchoolStudent)
+  @Inject
+  // @Inject({ type: MiddleSchoolStudent })
+  leader: Student;
+  constructor() {}
 }
