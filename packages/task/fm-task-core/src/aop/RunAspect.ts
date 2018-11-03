@@ -1,4 +1,4 @@
-import { Aspect, Before, Joinpoint } from '@ferrymen/fm-aop';
+import { Aspect, Before, Joinpoint, AfterReturning } from '@ferrymen/fm-aop';
 import { Inject, ContainerToken, IContainer } from '@ferrymen/fm-ioc-core';
 import { Task } from '../decorators';
 import { RunState, Activity, IActivityRunner } from '../core';
@@ -36,20 +36,20 @@ export class RunAspect {
     }
   }
 
-  // @AfterReturning('execution(*.run)')
-  // afterRun(joinPoint: Joinpoint) {
-  //   let runner = this.getRunner(joinPoint.target);
-  //   if (!runner) {
-  //     return;
-  //   }
-  //   runner.saveState(joinPoint);
-  //   switch (runner.state) {
-  //     case RunState.pause:
-  //       throw new Error('workflow paused!');
-  //     case RunState.stop:
-  //       throw new Error('workflow stop!');
-  //   }
-  // }
+  @AfterReturning('execution(*.run)')
+  afterRun(joinPoint: Joinpoint) {
+    let runner = this.getRunner(joinPoint.target);
+    if (!runner) {
+      return;
+    }
+    runner.saveState(joinPoint);
+    switch (runner.state) {
+      case RunState.pause:
+        throw new Error('workflow paused!');
+      case RunState.stop:
+        throw new Error('workflow stop!');
+    }
+  }
 
   getRunner(task: any) {
     if (task instanceof Activity) {

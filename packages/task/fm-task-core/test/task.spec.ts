@@ -2,7 +2,7 @@ import 'mocha';
 import { expect } from 'chai';
 import { ITaskContainer, ActivityRunner } from '../src';
 import { TaskContainer } from './mock';
-import { SimpleTask } from './simples.task';
+import { SimpleTask, SimpleCTask } from './simples.task';
 
 describe('auto register with build', () => {
   let container: ITaskContainer;
@@ -22,5 +22,10 @@ describe('auto register with build', () => {
     let result = await container.use(SimpleTask).bootstrap('test');
     // console.log(result);
     expect(result.resultValue).eq('simple task');
+  });
+
+  it('should bootstrap with component task.', async () => {
+    let result = await container.bootstrap(SimpleCTask);
+    expect(result.resultValue).eq('component task');
   });
 });
